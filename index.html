@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STUDIO R | Neural Workspace v3.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --accent-cyan: #06b6d4;
+            --accent-magenta: #d946ef;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-blue: #3b82f6;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+            background-color: #040406;
+            color: #f8fafc;
+        }
+
+        .prism-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 5% 5%, rgba(6, 182, 212, 0.15) 0, transparent 40%),
+                radial-gradient(circle at 95% 95%, rgba(217, 70, 239, 0.15) 0, transparent 40%),
+                radial-gradient(circle at 50% 50%, #040406 0, transparent 100%);
+        }
+
+        .chromatic-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            animation: float-chromatic 25s infinite alternate ease-in-out;
+        }
+
+        @keyframes float-chromatic {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(150px, -100px) scale(1.2); }
+            100% { transform: translate(-50px, 100px) scale(0.8); }
+        }
+
+        .neon-glass {
+            background: rgba(10, 10, 12, 0.75);
+            backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.02);
+        }
+
+        .iridescent-text {
+            background: linear-gradient(90deg, #06b6d4, #d946ef, #10b981, #f59e0b, #06b6d4);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: text-flow 8s linear infinite;
+        }
+
+        @keyframes text-flow {
+            to { background-position: 300% center; }
+        }
+
+        .v3-badge {
+            font-size: 9px;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #06b6d4, #d946ef);
+            color: white;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+
+        .chat-bubble-unique {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chat-bubble-unique:hover {
+            transform: scale(1.01);
+        }
+
+        .glow-cyan { filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.8)); }
+        .glow-emerald { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.8)); }
+        .glow-magenta { filter: drop-shadow(0 0 12px rgba(217, 70, 239, 0.8)); }
+        .glow-amber { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8)); }
+        .glow-blue { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.8)); }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+
+        .orb-pulse {
+            animation: orb-flow 4s infinite ease-in-out;
+        }
+
+        @keyframes orb-flow {
+            0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 40px rgba(6, 182, 212, 0.3); }
+            50% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 60px rgba(217, 70, 239, 0.5); }
+        }
+
+        .blueprint-card {
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="prism-bg">
+        <div class="chromatic-orb w-[600px] h-[600px] bg-cyan-500 top-[-100px] left-[-100px]"></div>
+        <div class="chromatic-orb w-[500px] h-[500px] bg-magenta-500 bottom-[-50px] right-[-50px]"></div>
+        <div class="chromatic-orb w-[400px] h-[400px] bg-emerald-500 top-[40%] left-[20%] opacity-10"></div>
+    </div>
+    <div id="root"></div>
+</body>
+</html>
